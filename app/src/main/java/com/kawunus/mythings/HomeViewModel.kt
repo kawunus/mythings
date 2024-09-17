@@ -18,6 +18,12 @@ class HomeViewModel(private val database: AppDatabase) : ViewModel() {
     fun delete(place: Place) = viewModelScope.launch {
         database.placeDao().delete(place)
     }
+
+    fun loadPlaces(adapter: PlacesAdapter) {
+        allPlaces.observeForever { places ->
+            adapter.saveData(places)
+        }
+    }
 }
 
 class PlaceViewModelFactory(private val database: AppDatabase) : ViewModelProvider.Factory {
