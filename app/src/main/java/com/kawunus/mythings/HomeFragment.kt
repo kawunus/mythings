@@ -18,11 +18,11 @@ class HomeFragment : Fragment() {
         val database = DatabaseProvider.getDatabase(requireContext())
         viewModel =
             ViewModelProvider(this, PlaceViewModelFactory(database))[HomeViewModel::class.java]
-        viewModel.allPlaces.observe(viewLifecycleOwner) { places ->
-            val adapter = PlacesAdapter()
-            binding.recyclewView.adapter = adapter
-            viewModel.loadPlaces(adapter)
-        }
+
+        val adapter = PlacesAdapter()
+        binding.recyclewView.adapter = adapter
+        viewModel.loadPlaces(adapter)
+
     }
 
     override fun onCreateView(
