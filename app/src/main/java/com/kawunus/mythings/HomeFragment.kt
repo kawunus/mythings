@@ -1,30 +1,37 @@
 package com.kawunus.mythings
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.kawunus.mythings.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var binding: FragmentHomeBinding
 
-    private val viewModel: HomeViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val database = DatabaseProvider.getDatabase(requireContext())
+        viewModel =
+            ViewModelProvider(this, PlaceViewModelFactory(database))[HomeViewModel::class.java]
+        viewModel.allPlaces.observe(viewLifecycleOwner) { places ->
+            val adapter = PlacesAdapter()
+            binding.recyclewView.adapter = adapter
+            (binding.recyclewView.adapter as PlacesAdapter).saveData(places)
+            Log.e("DB", places.toString())
+        }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+
+        return binding.root
     }
 }
