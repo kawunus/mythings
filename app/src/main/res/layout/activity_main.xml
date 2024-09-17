@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,89 +8,13 @@
     android:background="@color/backgroundColor"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/leftBorder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="20dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/rightBorder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="20dp" />
-
-        <TextView
-            android:id="@+id/startMessageText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/lato_font_regular"
-            android:text="@string/good_morning"
-            android:textColor="@color/colorOnSecondary"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@id/leftBorder"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/startMessageName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:fontFamily="@font/lato_font"
-            android:text="Имя пользователя"
-            android:textColor="@color/colorOnSecondary"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/leftBorder"
-            app:layout_constraintTop_toBottomOf="@id/startMessageText" />
-
-        <EditText
-            android:id="@+id/searchEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:background="@drawable/search_background"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="10dp"
-            android:fontFamily="@font/lato_font_regular"
-            android:gravity="center_vertical"
-            android:hint="@string/search"
-            android:paddingVertical="12dp"
-            android:paddingStart="12dp"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="@id/rightBorder"
-            app:layout_constraintStart_toStartOf="@id/leftBorder"
-            app:layout_constraintTop_toBottomOf="@id/startMessageName" />
-
-        <TextView
-            android:id="@+id/placesTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/lato_font_regular"
-            android:text="@string/places"
-            android:textColor="@color/colorOnSecondary"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/leftBorder"
-            app:layout_constraintTop_toBottomOf="@id/searchEditText" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclewView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:nestedScrollingEnabled="false"
-            app:layout_constraintEnd_toEndOf="@id/rightBorder"
-            app:layout_constraintStart_toStartOf="@id/leftBorder"
-            app:layout_constraintTop_toBottomOf="@id/placesTextView"
-            tools:listitem="@layout/place_item" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
