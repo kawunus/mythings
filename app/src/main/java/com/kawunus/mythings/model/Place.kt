@@ -1,4 +1,4 @@
-package com.kawunus.mythings
+package com.kawunus.mythings.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

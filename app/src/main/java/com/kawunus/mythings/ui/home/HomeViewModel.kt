@@ -1,13 +1,15 @@
-package com.kawunus.mythings
+package com.kawunus.mythings.ui.home
 
-import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.kawunus.mythings.ui.adapter.PlacesAdapter
+import com.kawunus.mythings.R
+import com.kawunus.mythings.data.AppDatabase
+import com.kawunus.mythings.model.Place
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val database: AppDatabase) : ViewModel() {

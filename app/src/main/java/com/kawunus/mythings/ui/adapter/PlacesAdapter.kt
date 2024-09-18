@@ -1,10 +1,12 @@
-package com.kawunus.mythings
+package com.kawunus.mythings.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.kawunus.mythings.R
+import com.kawunus.mythings.model.Place
 
 class PlacesAdapter : RecyclerView.Adapter<PlacesViewHolder>() {
 

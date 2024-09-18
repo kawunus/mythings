@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewPlaceFragment">
+    tools:context=".ui.newplace.NewPlaceFragment">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -31,8 +31,9 @@
         android:textColor="@color/colorOnSecondary"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/leftBorder"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/arrowBackImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"/>
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -93,5 +94,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/rightBorder"
         app:layout_constraintStart_toStartOf="@id/leftBorder" />
+
+    <ImageView
+        android:id="@+id/arrowBackImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintBottom_toBottomOf="@id/newPlaceTextView"
+        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintTop_toTopOf="@id/newPlaceTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

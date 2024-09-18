@@ -1,8 +1,11 @@
-package com.kawunus.mythings
+package com.kawunus.mythings.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.kawunus.mythings.R
 import com.kawunus.mythings.databinding.PlaceItemBinding
+import com.kawunus.mythings.model.Place
+import com.kawunus.mythings.util.WordEndingHelper
 
 class PlacesViewHolder(placeView: View) : RecyclerView.ViewHolder(placeView) {
 

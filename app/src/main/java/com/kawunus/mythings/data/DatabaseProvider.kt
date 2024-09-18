@@ -1,4 +1,4 @@
-package com.kawunus.mythings
+package com.kawunus.mythings.data
 
 import android.content.Context
 import androidx.room.Room

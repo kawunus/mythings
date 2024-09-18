@@ -1,4 +1,4 @@
-package com.kawunus.mythings
+package com.kawunus.mythings.util
 
 object WordEndingHelper {
     fun getWordForm(count: Int, form1: String, form2: String, form5: String): String {
