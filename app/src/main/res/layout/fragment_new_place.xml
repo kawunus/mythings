@@ -78,6 +78,8 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/lato_font_regular"
         android:hint="Название места"
+        android:lines="1"
+        android:maxLines="1"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@id/rightBorder"
         app:layout_constraintStart_toStartOf="@id/leftBorder"
