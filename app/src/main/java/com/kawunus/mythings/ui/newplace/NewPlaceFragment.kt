@@ -1,26 +1,31 @@
 package com.kawunus.mythings.ui.newplace
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kawunus.mythings.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.kawunus.mythings.databinding.FragmentNewPlaceBinding
+import com.kawunus.mythings.ui.home.HomeFragment
 
 class NewPlaceFragment : Fragment() {
 
     private val viewModel: NewPlaceViewModel by viewModels()
+    private lateinit var binding: FragmentNewPlaceBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.arrowBackImageView.setOnClickListener {
+            viewModel.replaceFragment(HomeFragment(), parentFragmentManager)
+        }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_new_place, container, false)
+        binding = FragmentNewPlaceBinding.inflate(layoutInflater, container, false)
+
+        return binding.root
     }
 }
