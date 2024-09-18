@@ -30,12 +30,6 @@ class HomeViewModel(private val database: AppDatabase) : ViewModel() {
             adapter.saveData(places)
         }
     }
-
-    fun replaceFragment(fragment: Fragment, fragmentManager: FragmentManager){
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayout, fragment)
-        fragmentTransaction.commit()
-    }
     
 }
 

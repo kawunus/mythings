@@ -19,16 +19,6 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        replaceFragment(HomeFragment())
-
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayout, fragment)
-        fragmentTransaction.commit()
     }
 
 }

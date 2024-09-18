@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.kawunus.mythings.R
 import com.kawunus.mythings.databinding.FragmentNewPlaceBinding
-import com.kawunus.mythings.ui.home.HomeFragment
 
 class NewPlaceFragment : Fragment() {
 
@@ -17,7 +18,10 @@ class NewPlaceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.arrowBackImageView.setOnClickListener {
-            viewModel.replaceFragment(HomeFragment(), parentFragmentManager)
+            findNavController().popBackStack()
+        }
+        binding.createTextView.setOnClickListener {
+            
         }
     }
 
