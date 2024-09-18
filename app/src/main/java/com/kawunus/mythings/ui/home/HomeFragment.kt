@@ -11,6 +11,7 @@ import com.kawunus.mythings.R
 import com.kawunus.mythings.data.DatabaseProvider
 import com.kawunus.mythings.databinding.FragmentHomeBinding
 import com.kawunus.mythings.ui.adapter.PlacesAdapter
+import com.kawunus.mythings.util.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
@@ -20,8 +21,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val database = DatabaseProvider.getDatabase(requireContext())
-        viewModel =
-            ViewModelProvider(this, PlaceViewModelFactory(database))[HomeViewModel::class.java]
+        viewModel = ViewModelProvider(this, ViewModelFactory(database))[HomeViewModel::class.java]
 
         val adapter = PlacesAdapter()
         binding.recyclewView.adapter = adapter

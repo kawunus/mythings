@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.kawunus.mythings.data.DatabaseProvider
 import com.kawunus.mythings.databinding.FragmentNewPlaceBinding
+import com.kawunus.mythings.util.ViewModelFactory
 
 class NewPlaceFragment : Fragment() {
 
@@ -20,7 +21,7 @@ class NewPlaceFragment : Fragment() {
 
         val database = DatabaseProvider.getDatabase(requireContext())
         viewModel = ViewModelProvider(
-            this, NewPlaceViewModelFactory(database)
+            this, ViewModelFactory(database)
         )[NewPlaceViewModel::class.java]
 
 
