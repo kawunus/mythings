@@ -23,6 +23,9 @@ class HomeFragment : Fragment() {
         binding.recyclewView.adapter = adapter
         viewModel.loadPlaces(adapter)
 
+        binding.addPlaceImageView.setOnClickListener {
+            viewModel.replaceFragment(NewPlaceFragment(), parentFragmentManager)
+        }
     }
 
     override fun onCreateView(

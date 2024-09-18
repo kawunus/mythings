@@ -1,5 +1,9 @@
 package com.kawunus.mythings
 
+import android.content.Context
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +28,13 @@ class HomeViewModel(private val database: AppDatabase) : ViewModel() {
             adapter.saveData(places)
         }
     }
+
+    fun replaceFragment(fragment: Fragment, fragmentManager: FragmentManager){
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.commit()
+    }
+    
 }
 
 class PlaceViewModelFactory(private val database: AppDatabase) : ViewModelProvider.Factory {
