@@ -16,11 +16,6 @@ class HomeViewModel(private val database: AppDatabase) : ViewModel() {
 
     val allPlaces: LiveData<List<Place>> = database.placeDao().getAllPlaces()
 
-
-    fun delete(place: Place) = viewModelScope.launch {
-        database.placeDao().delete(place)
-    }
-
     fun loadPlaces(adapter: PlacesAdapter) {
         allPlaces.observeForever { places ->
             adapter.saveData(places)
