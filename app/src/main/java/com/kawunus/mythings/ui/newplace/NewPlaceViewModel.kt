@@ -1,5 +1,7 @@
 package com.kawunus.mythings.ui.newplace
 
+import android.content.Intent
+import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -45,5 +47,12 @@ class NewPlaceViewModel(private val database: AppDatabase) : ViewModel() {
         const val SUCCESSFUL = 1
         const val EMPTY_NAME = 2
         const val EXIST = 3
+    }
+
+    fun openGallery(resultLauncher: ActivityResultLauncher<Intent>) {
+        val intent = Intent(Intent.ACTION_PICK).apply {
+            type = "image/*"
+        }
+        resultLauncher.launch(intent)
     }
 }
