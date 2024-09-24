@@ -1,17 +1,18 @@
 package com.kawunus.mythings.ui.newplace
 
 import android.app.Activity
-import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.kawunus.mythings.data.DatabaseProvider
 import com.kawunus.mythings.databinding.FragmentNewPlaceBinding
 import com.kawunus.mythings.ui.newplace.NewPlaceViewModel.InsertCodes
@@ -21,6 +22,8 @@ class NewPlaceFragment : Fragment() {
 
     private lateinit var viewModel: NewPlaceViewModel
     private lateinit var binding: FragmentNewPlaceBinding
+
+    private lateinit var mProfileUri: Uri
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,20 +41,30 @@ class NewPlaceFragment : Fragment() {
             insert(binding.nameEditText.text.toString())
         }
         binding.imageView.setOnClickListener {
-            viewModel.openGallery(resultLauncher)
+            ImagePicker.with(this).crop().compress(1024).maxResultSize(1080, 1080)
+                .createIntent { intent ->
+                    startForProfileImageResult.launch(intent)
+                }
         }
     }
 
-    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            data?.data?.let { uri ->
-                Glide.with(this)
-                    .load(uri)
-                    .into(binding.imageView)
+    private val startForProfileImageResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            val resultCode = result.resultCode
+            val data = result.data
+
+            if (resultCode == Activity.RESULT_OK) {
+                val fileUri = data?.data!!
+
+                mProfileUri = fileUri
+                binding.imageView.setImageURI(fileUri)
+            } else if (resultCode == ImagePicker.RESULT_ERROR) {
+                Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()
             }
         }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -88,4 +101,6 @@ class NewPlaceFragment : Fragment() {
     private fun showErrorMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
+
+
 }
