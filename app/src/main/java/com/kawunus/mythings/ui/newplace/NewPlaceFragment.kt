@@ -24,8 +24,6 @@ class NewPlaceFragment : Fragment() {
     private lateinit var viewModel: NewPlaceViewModel
     private lateinit var binding: FragmentNewPlaceBinding
 
-    private lateinit var mProfileUri: Uri
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -56,8 +54,6 @@ class NewPlaceFragment : Fragment() {
 
             if (resultCode == Activity.RESULT_OK) {
                 val fileUri = data?.data!!
-
-                mProfileUri = fileUri
                 binding.imageView.setImageURI(fileUri)
             }
         }
