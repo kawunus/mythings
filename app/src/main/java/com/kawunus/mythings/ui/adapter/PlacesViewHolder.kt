@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kawunus.mythings.R
 import com.kawunus.mythings.databinding.PlaceItemBinding
 import com.kawunus.mythings.model.Place
+import com.kawunus.mythings.util.ImageConverter
 import com.kawunus.mythings.util.WordEndingHelper
 
 class PlacesViewHolder(placeView: View) : RecyclerView.ViewHolder(placeView) {
@@ -21,6 +22,8 @@ class PlacesViewHolder(placeView: View) : RecyclerView.ViewHolder(placeView) {
                 itemView.context.getString(R.string.place_form3)
             )
         }"
+
+        imageView.setImageBitmap(ImageConverter.byteArrayToBitmap(model.image))
     }
 
 }

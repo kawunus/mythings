@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -71,7 +72,7 @@ class NewPlaceFragment : Fragment() {
 
     private fun insert(name: String) {
 
-        val code = viewModel.insert(name)
+        val code = viewModel.insert(name, binding.imageView.drawable.toBitmap())
 
         when (code) {
             InsertCodes.EXIST -> {
