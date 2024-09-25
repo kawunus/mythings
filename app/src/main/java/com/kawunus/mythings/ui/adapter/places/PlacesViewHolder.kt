@@ -1,4 +1,4 @@
-package com.kawunus.mythings.ui.adapter
+package com.kawunus.mythings.ui.adapter.places
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
