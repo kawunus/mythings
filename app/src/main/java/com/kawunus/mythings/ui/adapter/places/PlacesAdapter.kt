@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kawunus.mythings.R
 import com.kawunus.mythings.model.Place
 
-class PlacesAdapter : RecyclerView.Adapter<PlacesViewHolder>() {
+class PlacesAdapter(private val onItemClick: () -> Unit) :
+    RecyclerView.Adapter<PlacesViewHolder>() {
 
     private val diffUtil = object : DiffUtil.ItemCallback<Place>() {
         override fun areItemsTheSame(oldItem: Place, newItem: Place): Boolean {
@@ -37,6 +38,9 @@ class PlacesAdapter : RecyclerView.Adapter<PlacesViewHolder>() {
 
     override fun onBindViewHolder(holder: PlacesViewHolder, position: Int) {
         holder.bind(asyncListDiffer.currentList[position])
+        holder.itemView.setOnClickListener {
+            onItemClick.invoke()
+        }
     }
 
 }
