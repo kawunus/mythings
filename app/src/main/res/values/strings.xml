@@ -8,4 +8,8 @@
     <string name="place_form1">предмет</string>
     <string name="place_form2">предмета</string>
     <string name="place_form3">предметов</string>
+
+    <!-- Place Screen -->
+    <string name="things">Предметы</string>
+    <string name="elements">элементов</string>
 </resources>

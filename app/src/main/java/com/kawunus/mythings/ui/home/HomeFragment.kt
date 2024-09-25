@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.kawunus.mythings.R
 import com.kawunus.mythings.data.DatabaseProvider
 import com.kawunus.mythings.databinding.FragmentHomeBinding
-import com.kawunus.mythings.ui.adapter.PlacesAdapter
+import com.kawunus.mythings.ui.adapter.places.PlacesAdapter
 import com.kawunus.mythings.util.ViewModelFactory
 
 class HomeFragment : Fragment() {
